@@ -9,7 +9,7 @@ public class TestDAO {
 
 	public static void main(String args[]) {
 		
-		BabsDAO dao = new BabsDAO();
+/*		BabsDAO dao = new BabsDAO();
 
 		List<Station> stations = dao.getAllStations();
 		
@@ -19,6 +19,6 @@ public class TestDAO {
 
 		List<Trip> trips = dao.getAllTrips();
 		System.out.format("Found %d trips", trips.size());
-
+*/
 	}
 }

@@ -2,8 +2,12 @@ package it.polito.tdp.babs;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import com.sun.prism.impl.TextureResourcePool;
+
+import it.polito.tdp.babs.model.CountResult;
 import it.polito.tdp.babs.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,7 +40,16 @@ public class BabsController {
 
 	@FXML
 	void doContaTrip(ActionEvent event) {
-
+		txtResult.clear();
+		LocalDate date = pickData.getValue();
+		List <CountResult> results = model.getTripCounts(date);
+		if (results == null) {
+			txtResult.setText("Non ci sono trip per la data selezionata");
+			return;
+		}
+		for (CountResult cr : results) {
+				txtResult.appendText(cr.toString());
+			}
 	}
 
 	@FXML
