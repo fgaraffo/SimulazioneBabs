@@ -35,6 +35,12 @@ public class Model {
 		return results;
 	}
 
+	public void simula(LocalDate date, Double k, Model model) {
+		Simulazione sim = new Simulazione(date,k, model);
+		sim.run();
+		
+	}
+
 	
 	
 	

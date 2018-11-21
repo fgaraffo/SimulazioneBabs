@@ -40,6 +40,7 @@ public class BabsController {
 
 	@FXML
 	void doContaTrip(ActionEvent event) {
+		try {
 		txtResult.clear();
 		LocalDate date = pickData.getValue();
 		List <CountResult> results = model.getTripCounts(date);
@@ -50,11 +51,29 @@ public class BabsController {
 		for (CountResult cr : results) {
 				txtResult.appendText(cr.toString());
 			}
+	
+		} catch (RuntimeException e) {
+			txtResult.setText("Errore di connessione al DB");
+		}
 	}
 
 	@FXML
 	void doSimula(ActionEvent event) {
-
+		try {
+			txtResult.clear();
+			LocalDate date = pickData.getValue();
+			if (date.getDayOfWeek().getValue() > 4) {
+				txtResult.setText("Selezionare una data dal Lun al Ven");
+				return;
+			}
+			
+			Double k = sliderK.getValue();
+			model.simula(date, k, this.model);
+						
+		}
+		catch (RuntimeException e) {
+			txtResult.setText("Errore di connessione al DB");
+		}		
 	}
 
 	@FXML
