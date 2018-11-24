@@ -9,6 +9,7 @@ import com.sun.prism.impl.TextureResourcePool;
 
 import it.polito.tdp.babs.model.CountResult;
 import it.polito.tdp.babs.model.Model;
+import it.polito.tdp.babs.model.SimulationResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -68,7 +69,8 @@ public class BabsController {
 			}
 			
 			Double k = sliderK.getValue();
-			model.simula(date, k, this.model);
+			SimulationResult sr = model.simula(date, k, this.model);
+			txtResult.setText(sr.toString());
 						
 		}
 		catch (RuntimeException e) {

@@ -35,14 +35,19 @@ public class Model {
 		return results;
 	}
 
-	public void simula(LocalDate date, Double k, Model model) {
+	public List <Station> getStations(){
+		return stations;
+	}
+	
+	
+	public SimulationResult simula(LocalDate date, Double k, Model model) {
 		Simulazione sim = new Simulazione(date,k, model);
 		sim.run();
-		
+		return sim.getResults();
 	}
 
-	
-	
-	
+	public Station getStationById (int id) {
+		return stationIdMap.get(id);
+	}
 	
 }
